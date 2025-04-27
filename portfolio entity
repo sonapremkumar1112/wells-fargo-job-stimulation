@@ -1,0 +1,65 @@
+import javax.persistence.*;
+
+@Entity
+public class Portfolio {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long portfolioId;
+
+    private double balance;
+
+    private String createdDate;
+    private String updatedDate;
+
+    @OneToOne(mappedBy = "portfolio")
+    private Client client;
+
+    // Constructor
+    public Portfolio(double balance, String createdDate, String updatedDate) {
+        this.balance = balance;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+    }
+
+    // Getters and Setters
+    public Long getPortfolioId() {
+        return portfolioId;
+    }
+
+    public void setPortfolioId(Long portfolioId) {
+        this.portfolioId = portfolioId;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public String getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(String updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+}
