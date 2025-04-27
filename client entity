@@ -1,0 +1,59 @@
+import javax.persistence.*;
+
+@Entity
+public class Client {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long clientId;
+
+    private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "advisorId")
+    private FinancialAdvisor advisor;
+
+    @OneToOne
+    @JoinColumn(name = "portfolioId")
+    private Portfolio portfolio;
+
+    // Constructor
+    public Client(String name, FinancialAdvisor advisor, Portfolio portfolio) {
+        this.name = name;
+        this.advisor = advisor;
+        this.portfolio = portfolio;
+    }
+
+    // Getters and Setters
+    public Long getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(Long clientId) {
+        this.clientId = clientId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public FinancialAdvisor getAdvisor() {
+        return advisor;
+    }
+
+    public void setAdvisor(FinancialAdvisor advisor) {
+        this.advisor = advisor;
+    }
+
+    public Portfolio getPortfolio() {
+        return portfolio;
+    }
+
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
+    }
+}
